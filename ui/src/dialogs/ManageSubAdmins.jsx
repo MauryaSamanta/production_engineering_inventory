@@ -32,7 +32,7 @@ const ManageSubAdminsDialog = ({ open, onClose }) => {
 
     try {
 
-      const res = await fetch("http://localhost:5000/api/users", {
+      const res = await fetch("https://production-engineering-inventory.onrender.com/api/users", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`
@@ -59,7 +59,7 @@ const ManageSubAdminsDialog = ({ open, onClose }) => {
 
       setAdding(true);
 
-      const res = await fetch("http://localhost:5000/api/users/subadmin", {
+      const res = await fetch("https://production-engineering-inventory.onrender.com/api/users/subadmin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,7 +94,7 @@ const ManageSubAdminsDialog = ({ open, onClose }) => {
 
     try {
 
-      await fetch(`http://localhost:5000/api/users/promote/${id}`, {
+      await fetch(`https://production-engineering-inventory.onrender.com/api/users/promote/${id}`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`

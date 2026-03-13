@@ -87,7 +87,7 @@ const SearchAssets = () => {
       const query = new URLSearchParams(filters).toString();
 
       const res = await fetch(
-        `http://localhost:5000/api/assets/search?${query}`,
+        `https://production-engineering-inventory.onrender.com/api/assets/search?${query}`,
         {
           headers: {
             Authorization: `Bearer ${token}`

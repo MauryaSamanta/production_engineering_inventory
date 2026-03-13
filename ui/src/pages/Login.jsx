@@ -6,7 +6,8 @@ import {
   Typography,
   Paper,
   IconButton,
-  InputAdornment
+  InputAdornment,
+  CircularProgress
 } from "@mui/material";
 
 import Visibility from "@mui/icons-material/Visibility";
@@ -19,17 +20,17 @@ const Login = () => {
 
   const { login } = useAuth();
   const navigate = useNavigate();
-
+  const [loading,setLoading]=useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async () => {
-
+    setLoading(true)
     try {
 
       const res = await fetch(
-        "http://localhost:5000/api/auth/login",
+        "https://production-engineering-inventory.onrender.com/api/auth/login",
         {
           method: "POST",
           headers: {
@@ -49,11 +50,11 @@ const Login = () => {
         login(data.token, data.role, data.name);
 
         navigate("/");
-
+        
       } else {
         alert("Login failed");
       }
-
+      setLoading(false)
     } catch (err) {
       console.error(err);
     }
@@ -141,9 +142,11 @@ const Login = () => {
           fullWidth
           variant="contained"
           size="large"
+          disabled={loading}
           onClick={handleLogin}
           sx={{
             py: 1.4,
+            color:"white",
             borderRadius: 2,
             textTransform: "none",
             fontSize: 16,
@@ -155,7 +158,11 @@ const Login = () => {
             }
           }}
         >
-          Login
+          {loading ? (
+    <CircularProgress size={22} sx={{ color: "white" }} />
+  ) : (
+    "Login"
+  )}
         </Button>
 
       </Paper>
