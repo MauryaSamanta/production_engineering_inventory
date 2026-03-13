@@ -1,8 +1,33 @@
 export const labs = [
-  "Mfg Lab",
-  "Metrology Lab",
-  "CNC Lab",
-  "CAD Lab"
+  {
+    code: "MFG",
+    name: "Manufacturing Systems Laboratory"
+  },
+  {
+    code: "FMS",
+    name: "Flexible Manufacturing Systems Laboratory"
+  },
+  {
+    code: "CA_LAB",
+    name: "Computer Applications Laboratory"
+  },
+  {
+    code: "MET",
+    name: "Metrology Laboratory"
+  },
+  {
+    code: "NTM-I",
+    name: "Non-Traditional Machining Laboratory-I"
+  },
+  {
+    code: "NTM-II",
+    name: "Non-Traditional Machining Laboratory-II"
+  }
+  ,
+  {
+    code: "PM",
+    name: "Production Management Laboratory"
+  }
 ];
 
 export const dummyConsumables = [

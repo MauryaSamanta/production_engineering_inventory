@@ -1,0 +1,229 @@
+sl.no.,Lab,Specifications,image,Manufacturer/Model-Name,year of manufacture,situation
+JU/PROD/MFG/LATHE/03,MFG,"Admit length ? 72.3 cm
+
+Maximum diameter of job ? 15.6 cm
+
+Gap bed length ? 5.5 cm
+
+Motor power ? 1 HP
+
+Motor RPM ? 1425
+
+Number of speeds ? 6 (4 � 2 � 2 arrangement)
+
+Spindle RPM ? 234
+
+Feed (Rough) ? 48 mm/min
+
+Feed (Finish) ? 25 mm/min
+
+H.P.S.I. (High Speed Steel Index?)
+
+Minimum RPM ? 35
+
+Maximum RPM ? 790",,Pathak LATHE,,working
+JU/PROD/MFG/LATHE/02,MFG,"Admit length ? 72.3 cm
+
+Maximum diameter of job ? 15.6 cm
+
+Gap bed length ? 5.5 cm
+
+Motor power ? 1 HP
+
+Motor RPM ? 1425
+
+Number of speeds ? 6 (4 � 2 � 2 arrangement)
+
+Spindle RPM ? 234
+
+Feed (Rough) ? 48 mm/min
+
+Feed (Finish) ? 25 mm/min
+
+H.P.S.I. (High Speed Steel Index?)
+
+Minimum RPM ? 35
+
+Maximum RPM ? 790",,Pathak LATHE,,working
+JU/PROD/MFG/LATHE/01,MFG,"Admit length ? 72.3 cm
+
+Maximum diameter of job ? 15.6 cm
+
+Gap bed length ? 5.5 cm
+
+Motor power ? 1 HP
+
+Motor RPM ? 1425
+
+Number of speeds ? 6 (4 � 2 � 2 arrangement)
+
+Spindle RPM ? 234
+
+Feed (Rough) ? 48 mm/min
+
+Feed (Finish) ? 25 mm/min
+
+H.P.S.I. (High Speed Steel Index?)
+
+Minimum RPM ? 35
+
+Maximum RPM ? 790",,Pathak LATHE,,working
+JU/PROD/MFG/LATHE/04,MFG,"Admit length ? 72.3 cm
+
+Maximum diameter of job ? 15.6 cm
+
+Gap bed length ? 5.5 cm
+
+Motor power ? 1 HP
+
+Motor RPM ? 1425
+
+Number of speeds ? 6 (4 � 2 � 2 arrangement)
+
+Spindle RPM ? 234
+
+Feed (Rough) ? 48 mm/min
+
+Feed (Finish) ? 25 mm/min
+
+H.P.S.I. (High Speed Steel Index?)
+
+Minimum RPM ? 35
+
+Maximum RPM ? 790",,HP SINGH MACHINERY PVT LTD,,working
+JU/PROD/MFG/LATHE/05,MFG,"Admit length ? 72.3 cm
+
+Maximum diameter of job ? 15.6 cm
+
+Gap bed length ? 5.5 cm
+
+Motor power ? 1 HP
+
+Motor RPM ? 1425
+
+Number of speeds ? 6 (4 � 2 � 2 arrangement)
+
+Spindle RPM ? 234
+
+Feed (Rough) ? 48 mm/min
+
+Feed (Finish) ? 25 mm/min
+
+H.P.S.I. (High Speed Steel Index?)
+
+Minimum RPM ? 35
+
+Maximum RPM ? 790",,,,working
+JU/PROD/MFG/LATHE/06,MFG,all gear LATHE,,top engineers,,Dead due to lack of maintainance and no power
+JU/PROD/MFG/HOBBER/01,MFG, ,,PSG industrial institute GH600,1991,working
+JU/PROD/MFG/SHAPER/01,MFG,"Maximum length of stroke ? 18 in
+
+Table top (length � width) ? 460 mm � 295 mm
+
+Table horizontal travel ? 17 in
+
+Table vertical travel ? 12 in
+
+Number of speeds ? 4
+
+Range of speeds ? 260 � 380 rpm
+
+Number of feeds ? 4
+
+Motor power ? 1 HP
+
+Motor RPM ? 1380 rpm
+
+Crank centre height ? 720 mm",,L and T,,working
+JU/PROD/MFG/SHAPER/02,MFG,"Maximum length of stroke ? 12 in
+
+Table top (length � width) ? 375 mm � 255 mm
+
+Table horizontal travel ? 12 in
+
+Table vertical travel ? 8 in
+
+Number of speeds available ? 4
+
+Range of speeds ? 190 � 660 rpm
+
+Number of feeds ? 3
+
+Motor power ? 1 HP
+
+Motor RPM ? 1380 rpm
+
+Crank centre height ? 720 mm",,Bhartia Cutler-Hammer,,working
+JU/PROD/MFG/LATHE/07,MFG,copying LATHE,,kirloskar,,working
+JU/PROD/MFG/MILLING/01,MFG,"Longitudinal feed ? 22 in
+
+Transverse feed ? 12 in
+
+Vertical feed ? 15 in
+
+Working table surface ? 12 in � 22 in
+
+Number of T-slots ? 3
+
+Width of T-slots ? 13 mm � 22 mm
+
+Number of spindle feeds ? 6
+
+Range of spindle speeds ? 60 � 670 rpm
+
+Type of autofeed ? 1
+
+Range of autofeed ? 300 mm/min
+
+Motor power ? 1 HP
+
+Motor RPM ? 960 rpm
+
+Feed (Rough Cut) ? 56 mm/min
+
+Feed (Finish Cut) ? 28 mm/min",,pathak,,working
+JU/PROD/MFG/LATHE/08,MFG,turret LATHE,,manek lal and sons,,not working due to mechanical fault
+JU/PROD/MFG/GRINDER/01,MFG,,,Apex Machine and Tools Co.,,not working
+JU/PROD/MFG/MILLING/02,MFG,,,HP SINGH MACHINERY PVT LTD,,not working due to electrical fault
+JU/PROD/MFG/POWERPRESS/01,MFG,,,Pathak,,not working 
+JU/PROD/MFG/SHAPER/03,MFG,,,Bharti Cutler-Hammer,,not working
+JU/PROD/MFG/DRILLING/02,MFG,pillar drilling,,HPSM,,working
+JU/PROD/MFG/DRILLING/01,MFG,radial drilling,,pathak,,working
+JU/PROD/MFG/MILLING/03,MFG,"Longitudinal feed ? 38 cm
+
+Transverse feed ? 33 cm
+
+Number of T-slots ? 3
+
+Working table ? 20 � 66 sq. cm
+
+Number of spindle speeds ? 12
+
+Range of spindle speed ? 54 � 1120 RPM
+
+Motor RPM ? 960
+
+Motor power ? 1 HP
+
+Maximum height of feed ? 34 cm
+
+Width of the bed ? 20 cm
+
+Length of the bed ? 66 cm
+
+Cooling system ? with pump",,Precisipn Engineering Products,,working
+JU/PROD/MFG/SCRAP/01,,SM sir phd work instrument,,SM sir,,scrap
+JU/PROD/FMS/3DPRINTER/01,FMS,build volume : 256 ³mm³,,Bambu Lab X1 Carbon,,working
+JU/PROD/FMS/3DPRINTER/02,FMS,,,made by SS sir ,,working
+JU/PROD/FMS/3DPRINTER/03,FMS,,,made by SS sir ,,working
+JU/PROD/FMS/3DPRINTER/04,FMS,,,made by SS sir ,,not working
+JU/PROD/FMS/3DPRINTER/05,FMS,,,made by SS sir ,,not working
+JU/PROD/FMS/ROBOT/01,FMS,,,TecQuipment ,,not working
+JU/PROD/FMS/LATHE/09,FMS,CNC LATHE,, TecQuipment,,
+JU/PROD/FMS/ROBOT/02,FMS,5 axis,,RM 501 MITSUBISHI,,working
+JU/PROD/FMS/ROBOT/03,FMS,5axis,,RM MOVEMASTER II,,not working
+JU/PROD/FMS/PRINTER/01,FMS,,,HP color Laster Jet M252,,working
+JU/PROD/FMS/PRINTER/02,FMS,,,HP LASERJET 1020,,working
+JU/PROD/FMS/MILLING/04,FMS,,,MTAB XLMILL CNC milling,,
+JU/PROD/FMS/MICROSCOPE/01,FMS,,,,,not working
+JU/PROD/FMS/CONVEYER/01,FMS,,,,,not working
