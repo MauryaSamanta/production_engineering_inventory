@@ -54,7 +54,7 @@ const NonConsumablesTable = ({ data }) => {
       setLoading(true);
 
       const res = await fetch(
-        "https://production-engineering-inventory.onrender.com/api/changes/",
+        "https://production-engineering-inventory-g18j.onrender.com/api/changes/",
         {
           method: "POST",
           headers: {
