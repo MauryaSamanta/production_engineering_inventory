@@ -5,6 +5,7 @@ import ProtectedRoute from "./auth/protectedRoute";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import CreateLab from "./pages/CreateLab";
 
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import theme from "./theme";
@@ -32,6 +33,15 @@ function App() {
                   <Home />
                 </ProtectedRoute>
               }
+            />
+
+            <Route
+               path="/create-lab"
+                element={
+                  <ProtectedRoute>
+                    <CreateLab />
+                  </ProtectedRoute>
+                }
             />
 
           </Routes>

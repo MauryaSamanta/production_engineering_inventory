@@ -1,10 +1,13 @@
 import Labs from "../models/Labs.js";
+import mongoose from "mongoose";
 
 /* ---------------- CREATE LAB (ADMIN ONLY) ---------------- */
 
 export const createLab = async (req, res) => {
   try {
     const { name, type } = req.body;
+
+    
 
     // Validation
     if (!name) {
@@ -17,7 +20,9 @@ export const createLab = async (req, res) => {
     const lab = await Labs.create({
       name,
       type,
-      createdBy: req.user.id   // comes from auth middleware
+      createdBy: {
+      user: new mongoose.Types.ObjectId(req.user.id)
+      }
     });
 
     return res.status(201).json({
