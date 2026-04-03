@@ -1,12 +1,16 @@
-import express from 'express';
-import { createLab } from '../controllers/labsController.js';
-import {auth, adminOnly} from '../middlewares/auth.js';
+import express from "express";
+import { createLab, getLabs, deleteLab } from "../controllers/labsController.js";
+import { auth, adminOnly } from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.post("/", auth, adminOnly, (req, res, next) => {
-  console.log("🔥 LAB ROUTE HIT");
-  next();
-}, createLab);
+/* -------- GET ALL LABS -------- */
+router.get("/", auth, getLabs);
+
+/* -------- CREATE LAB -------- */
+router.post("/", auth, adminOnly, createLab);
+
+/* -------- DELETE LAB -------- */
+router.delete("/:id", auth, adminOnly, deleteLab);
 
 export default router;

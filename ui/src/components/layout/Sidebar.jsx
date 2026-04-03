@@ -5,257 +5,165 @@ import {
   ListItemText,
   Typography,
   Divider,
-  Box
+  Box,
+  Button
 } from "@mui/material";
 
 import SearchIcon from "@mui/icons-material/Search";
 import ScienceIcon from "@mui/icons-material/Science";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import { labs } from "../../data/dummyData";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Button } from "@mui/material";
+
 import { useAuth } from "../../auth/AuthContext";
-import { useState } from "react";
 import ManageSubAdminsDialog from "../../dialogs/ManageSubAdmins";
+import { useState } from "react";
+
 const Sidebar = ({
+  labs = [],
   setSelectedLab,
   setMode,
   selectedLab,
-  setSelectedLabName
+  setSelectedLabName,
+  onDeleteLab,
+  openCreateModal // ✅ comes from Home
 }) => {
 
   const drawerWidth = 270;
-const [openUsers, setOpenUsers] = useState(false);
-  const { name,role, logout } = useAuth();
+  const [openUsers, setOpenUsers] = useState(false);
+  const { name, role, logout } = useAuth();
 
   return (
     <Drawer
-  variant="permanent"
-  sx={{
-    width: drawerWidth,
-    flexShrink: 0,
-
-    "& .MuiDrawer-paper": {
-      width: drawerWidth,
-      display: "flex",
-      flexDirection: "column",
-      height: "100vh",
-      background: "linear-gradient(180deg,#7b3fe4,#9333ea)",
-      color: "#fff",
-      borderRight: "none",
-
-      // overflow: "hidden",
-
-      /* Hide scrollbar completely */
-
-      scrollbarWidth: "none",
-      msOverflowStyle: "none",
-
-      "&::-webkit-scrollbar": {
-        display: "none"
-      }
-    }
-  }}
->
-
-      {/* TOP SECTION */}
-
-     <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
-
-  {/* HEADER */}
-
-  <Box sx={{ p: 3 }}>
-    <Typography variant="h6" sx={{ fontWeight: 600 }}>
-      Production Engineering
-    </Typography>
-
-    <Typography variant="body2" sx={{ opacity: 0.7 }}>
-      Inventory System
-    </Typography>
-  </Box>
-
-  <List sx={{ px: 1 }}>
-
-    <ListItemButton
-      onClick={() => setMode("home")}
+      variant="permanent"
       sx={{
-        borderRadius: 2,
-        mb: 1,
-        "&:hover": { backgroundColor: "#2a2a40" }
+        width: drawerWidth,
+        flexShrink: 0,
+        "& .MuiDrawer-paper": {
+          width: drawerWidth,
+          display: "flex",
+          flexDirection: "column",
+          height: "100vh",
+          background: "linear-gradient(180deg,#7b3fe4,#9333ea)",
+          color: "#fff",
+          borderRight: "none"
+        }
       }}
     >
-      {/* <SearchIcon sx={{ mr: 2 }} /> */}
-      <DashboardIcon sx={{ mr: 2 }} />
-      <ListItemText primary="Dashboard" />
-    </ListItemButton>
+      <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
 
-  </List>
-  <Divider sx={{ backgroundColor: "rgba(255,255,255,0.1)" }} />
+        {/* HEADER */}
+        <Box sx={{ p: 3 }}>
+          <Typography variant="h6" sx={{ fontWeight: 600 }}>
+            Production Engineering
+          </Typography>
+          <Typography variant="body2" sx={{ opacity: 0.7 }}>
+            Inventory System
+          </Typography>
+        </Box>
 
-  {/* SEARCH */}
+        {/* DASHBOARD */}
+        <List sx={{ px: 1 }}>
+          <ListItemButton onClick={() => setMode("home")} sx={{ borderRadius: 2, mb: 1 }}>
+            <DashboardIcon sx={{ mr: 2 }} />
+            <ListItemText primary="Dashboard" />
+          </ListItemButton>
+        </List>
 
-  <List sx={{ px: 1 }}>
+        <Divider sx={{ backgroundColor: "rgba(255,255,255,0.1)" }} />
 
-    <ListItemButton
-      onClick={() => setMode("search")}
-      sx={{
-        borderRadius: 2,
-        mb: 1,
-        "&:hover": { backgroundColor: "#2a2a40" }
-      }}
-    >
-      <SearchIcon sx={{ mr: 2 }} />
-      <ListItemText primary="Search Assets" />
-    </ListItemButton>
+        {/* SEARCH + CREATE */}
+        <List sx={{ px: 1 }}>
+          <ListItemButton onClick={() => setMode("search")} sx={{ borderRadius: 2, mb: 1 }}>
+            <SearchIcon sx={{ mr: 2 }} />
+            <ListItemText primary="Search Assets" />
+          </ListItemButton>
 
-  </List>
+          {/* 🔥 CREATE LAB BUTTON */}
+          <ListItemButton
+            onClick={openCreateModal}
+            sx={{
+              borderRadius: 2,
+              mb: 1,
+              background: "rgba(255,255,255,0.1)",
+              "&:hover": { backgroundColor: "rgba(255,255,255,0.2)" }
+            }}
+          >
+            ➕ <ListItemText primary="Create Lab" sx={{ ml: 1 }} />
+          </ListItemButton>
+        </List>
 
-  <Divider sx={{ backgroundColor: "rgba(255,255,255,0.1)" }} />
+        <Divider sx={{ backgroundColor: "rgba(255,255,255,0.1)" }} />
 
-  {/* LABS HEADER */}
+        {/* LABS */}
+        <Box sx={{ px: 3, pt: 2 }}>
+          <Typography variant="caption" sx={{ opacity: 0.6 }}>
+            LABS
+          </Typography>
+        </Box>
 
-  <Box sx={{ px: 3, pt: 2 }}>
-    <Typography
-      variant="caption"
-      sx={{ opacity: 0.6, letterSpacing: 1 }}
-    >
-      LABS
-    </Typography>
-  </Box>
+        <Box sx={{ flex: 1, overflowY: "auto", px: 1 }}>
+          <List>
+            {labs.length === 0 ? (
+              <Typography sx={{ px: 2, py: 1 }}>No labs found</Typography>
+            ) : (
+              labs.map((lab) => (
+                <ListItemButton
+                  key={lab._id}
+                  onClick={() => {
+                    setSelectedLab(lab._id);
+                    setSelectedLabName(lab.name);
+                    setMode("lab");
+                  }}
+                  selected={selectedLab === lab._id}
+                  sx={{
+                    borderRadius: 2,
+                    mb: 1,
+                    display: "flex",
+                    justifyContent: "space-between"
+                  }}
+                >
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <ScienceIcon sx={{ mr: 2 }} />
+                    <ListItemText primary={lab.name} secondary={lab.type} />
+                  </Box>
 
-  {/* SCROLLABLE LABS */}
-
-  <Box
-    sx={{
-      flex: 1,
-      overflowY: "auto",
-      px: 1,
-      overflowY: "auto",
-
-"&::-webkit-scrollbar": {
-  width: "6px"
-},
-
-"&::-webkit-scrollbar-thumb": {
-  background: "rgba(255,255,255,0.35)",
-  borderRadius: "3px"
-}
-    }}
-  >
-
-    <List>
-
-      {labs.map((lab) => (
-
-        <ListItemButton
-          key={lab.code}
-
-          onClick={() => {
-            setSelectedLab(lab.code);
-            setSelectedLabName(lab.name);
-            setMode("lab");
-          }}
-
-          selected={selectedLab === lab.code}
-
-          sx={{
-            borderRadius: 2,
-            // borderTopLeftRadius:2,
-            // borderBottomLeftRadius:2,
-
-            mb: 1,
-            // background:selectedLab===lab.code && "#f5f6fa",
-            "&:hover": {
-              backgroundColor: "rgba(255,255,255,0.15)"
-            },
-
-            "&.Mui-selected": {
-              backgroundColor: "rgba(255,255,255,0.25)"
-            }
-          }}
-        >
-
-          <ScienceIcon sx={{ mr: 2 }} />
-
-          <ListItemText primary={lab.name} />
-
-        </ListItemButton>
-
-      ))}
-
-    </List>
-
-  </Box>
-
-</Box>
-
-      {/* BOTTOM USER PANEL */}
-
-      <Box
-        sx={{
-          p: 3,
-          borderTop: "1px solid rgba(255,255,255,0.15)"
-        }}
-      >
-
-        <Typography
-          variant="body2"
-          sx={{ opacity: 0.8 }}
-        >
-          Logged in as
-        </Typography>
-
-        <Typography
-          variant="subtitle2"
-          sx={{ fontWeight: 600 }}
-        >
-          {name}
-        </Typography>
-
-        <Typography
-          variant="caption"
-          sx={{ opacity: 0.7 }}
-        >
-          Role: {role}
-        </Typography>
-        {role==="admin" && (<Button
-          fullWidth
-          startIcon={<LogoutIcon />}
-          onClick={() => setOpenUsers(true)}
-          sx={{
-            mt: 2,
-            color: "#fff",
-            border: "1px solid rgba(255,255,255,0.3)",
-
-            "&:hover": {
-              backgroundColor: "rgba(255,255,255,0.15)"
-            }
-          }}
-        >
-          Manage Subadmin
-        </Button>)}
-        <Button
-          fullWidth
-          startIcon={<LogoutIcon />}
-          onClick={logout}
-          sx={{
-            mt: 2,
-            color: "#fff",
-            border: "1px solid rgba(255,255,255,0.3)",
-
-            "&:hover": {
-              backgroundColor: "rgba(255,255,255,0.15)"
-            }
-          }}
-        >
-          Logout
-        </Button>
+                  {/* DELETE */}
+                  <Box
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onDeleteLab(lab._id);
+                    }}
+                    sx={{ cursor: "pointer", color: "#ffb4b4" }}
+                  >
+                    🗑
+                  </Box>
+                </ListItemButton>
+              ))
+            )}
+          </List>
+        </Box>
 
       </Box>
-          <ManageSubAdminsDialog
-  open={openUsers}
-  onClose={() => setOpenUsers(false)}
-/>
+
+      {/* USER */}
+      <Box sx={{ p: 3 }}>
+        <Typography variant="body2">Logged in as</Typography>
+        <Typography variant="subtitle2">{name}</Typography>
+        <Typography variant="caption">Role: {role}</Typography>
+
+        <Button fullWidth onClick={() => setOpenUsers(true)} sx={{ mt: 2 }}>
+          Manage Subadmin
+        </Button>
+
+        <Button fullWidth startIcon={<LogoutIcon />} onClick={logout} sx={{ mt: 2 }}>
+          Logout
+        </Button>
+      </Box>
+
+      <ManageSubAdminsDialog
+        open={openUsers}
+        onClose={() => setOpenUsers(false)}
+      />
     </Drawer>
   );
 };

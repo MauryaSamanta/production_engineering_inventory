@@ -1,13 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function CreateLab() {
-
-  // const user = JSON.parse(localStorage.getItem("user"));
-
-  // if (user?.role !== "admin") {
-  //   return <h1 className="text-center mt-20">Access Denied</h1>;
-  // }
+export default function CreateLabModal({ onClose, onLabCreated }) {
 
   const [name, setName] = useState("");
   const [type, setType] = useState("None");
@@ -15,6 +9,17 @@ export default function CreateLab() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // ✅ FIX 1: validate BEFORE API call
+    if (!name.trim()) {
+      setMessage("❌ Lab name is required");
+      return;
+    }
+
+    if (type === "None") {
+      setMessage("❌ Please select a valid lab type");
+      return;
+    }
 
     try {
       const token = localStorage.getItem("token");
@@ -30,33 +35,49 @@ export default function CreateLab() {
       );
 
       setMessage("✅ Lab created successfully");
+
+      // ✅ FIX 2: update sidebar instantly
+      onLabCreated(res.data);
+
+      // reset
       setName("");
       setType("None");
+
+      // auto close modal
+      setTimeout(() => {
+        onClose();
+      }, 700);
 
     } catch (err) {
       setMessage(err.response?.data?.message || "❌ Error creating lab");
     }
   };
 
- return (
-  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-100 via-indigo-100 to-purple-200">
+  return (
+  <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
 
-    <div className="bg-white p-10 rounded-3xl shadow-2xl w-[400px] border border-purple-100">
+    <div className="bg-white w-[420px] p-8 rounded-2xl shadow-2xl border border-purple-100">
 
-      {/* Title */}
-      <h2 className="text-3xl font-bold text-purple-700 mb-2 text-center">
-        Create Lab
-      </h2>
+      {/* HEADER */}
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold text-purple-700">
+          Create New Lab
+        </h2>
 
-      <p className="text-gray-500 text-center mb-6">
-        Add a new lab to your system
-      </p>
+        <button
+          onClick={onClose}
+          className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100"
+        >
+          ✕
+        </button>
+      </div>
 
+      {/* FORM */}
       <form onSubmit={handleSubmit} className="space-y-5">
 
-        {/* Lab Name */}
+        {/* LAB NAME */}
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-1">
+          <label className="text-sm font-medium text-gray-600 mb-1 block">
             Lab Name
           </label>
           <input
@@ -70,9 +91,9 @@ export default function CreateLab() {
           />
         </div>
 
-        {/* Lab Type */}
+        {/* LAB TYPE */}
         <div>
-          <label className="block text-sm font-medium text-gray-600 mb-1">
+          <label className="text-sm font-medium text-gray-600 mb-1 block">
             Lab Type
           </label>
           <select
@@ -89,26 +110,22 @@ export default function CreateLab() {
           </select>
         </div>
 
-        {/* Button */}
+        {/* BUTTON */}
         <button
           type="submit"
-          className="w-full bg-purple-600 text-white py-3 rounded-xl font-semibold 
-                     hover:bg-purple-700 active:scale-95 transition-all duration-200 shadow-md"
+          className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 
+                     text-white py-3 rounded-xl font-semibold 
+                     hover:from-purple-700 hover:to-indigo-700 
+                     transition shadow-md"
         >
           + Create Lab
         </button>
 
       </form>
 
-      {/* Message */}
+      {/* MESSAGE */}
       {message && (
-        <div
-          className={`mt-5 text-center text-sm font-medium px-4 py-2 rounded-lg ${
-            message.includes("success")
-              ? "bg-green-100 text-green-700"
-              : "bg-red-100 text-red-700"
-          }`}
-        >
+        <div className="mt-4 text-center text-sm text-gray-700">
           {message}
         </div>
       )}
