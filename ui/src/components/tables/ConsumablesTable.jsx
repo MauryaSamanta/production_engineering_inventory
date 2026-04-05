@@ -55,7 +55,7 @@ const ConsumablesTable = ({ data }) => {
       setLoading(true);
 
       await fetch(
-        "https://production-engineering-inventory-g18j.onrender.com/api/changes/",
+        "http://localhost:5000/api/changes/",
         {
           method: "POST",
           headers: {

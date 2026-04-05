@@ -7,7 +7,7 @@ import assetRoutes from "./routes/assetRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import changeRoutes from "./routes/changeRequestRoutes.js";
-
+import roomRoutes from "./routes/roomRoutes.js";
 dotenv.config();
 
 const app = express();
@@ -26,7 +26,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/assets", assetRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/changes", changeRoutes);
-
+app.use("/api/rooms", roomRoutes);
 
 /* ----------------------- Health Check ----------------------- */
 

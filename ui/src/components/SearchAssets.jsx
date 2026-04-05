@@ -87,7 +87,7 @@ const SearchAssets = () => {
       const query = new URLSearchParams(filters).toString();
 
       const res = await fetch(
-        `https://production-engineering-inventory-g18j.onrender.com/api/assets/search?${query}`,
+        `http://localhost:5000/api/assets/search?${query}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -113,9 +113,7 @@ const SearchAssets = () => {
 
       {/* PAGE TITLE */}
 
-      <Typography variant="h5" sx={{ mb: 3 }}>
-        Search Assets
-      </Typography>
+ 
 
 
       {/* FILTER CARD */}
@@ -127,7 +125,11 @@ const SearchAssets = () => {
     boxShadow: "0 2px 10px rgba(0,0,0,0.05)"
   }}
 >
+       
   <CardContent sx={{ p: 2 }}>
+    <Typography variant="h5" sx={{ mb: 3 }}>
+        Search Assets
+      </Typography>
   <Box
     sx={{
       display: "flex",

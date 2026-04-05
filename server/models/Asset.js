@@ -15,16 +15,16 @@ const AssetSchema = new mongoose.Schema({
 
   category: {
   type: String,
-  enum: [
-    "Machine",
-    "Tool",
-    "Computer",
-    "Furniture",
-    "Office",
-    "Automation",
-    "Lab Equipment",
-    "Scrap"
-  ]
+  // enum: [
+  //   "Machine",
+  //   "Tool",
+  //   "Computer",
+  //   "Furniture",
+  //   "Office",
+  //   "Automation",
+  //   "Lab Equipment",
+  //   "Scrap"
+  // ]
 },
 
   lab: String,

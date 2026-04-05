@@ -25,7 +25,7 @@ const AdminChangeRequestsDashboard = () => {
     try {
 
       const res = await fetch(
-        "https://production-engineering-inventory-g18j.onrender.com/api/changes/pending",
+        "http://localhost:5000/api/changes/pending",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -55,7 +55,7 @@ const AdminChangeRequestsDashboard = () => {
       setLoadingId(id);
 
       await fetch(
-        `https://production-engineering-inventory-g18j.onrender.com/api/changes/approve/${id}`,
+        `http://localhost:5000/api/changes/approve/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -83,7 +83,7 @@ const AdminChangeRequestsDashboard = () => {
       setLoadingId(id);
 
       await fetch(
-        `https://production-engineering-inventory-g18j.onrender.com/api/changes/reject/${id}`,
+        `http://localhost:5000/api/changes/reject/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -106,7 +106,7 @@ const AdminChangeRequestsDashboard = () => {
 
   return (
 
-    <Box sx={{ p: 4 }}>
+    <Box sx={{ p: 4,background: "#faf9f6cd", borderRadius:1 }}>
 
       <Typography variant="h5" sx={{ mb: 3 }}>
          {role === "admin"
@@ -164,7 +164,7 @@ const AdminChangeRequestsDashboard = () => {
                       </Typography>
 
                     </Box>
-
+                      
                     <Chip
                       label="Pending"
                       color="warning"

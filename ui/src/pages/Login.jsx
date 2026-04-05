@@ -30,7 +30,7 @@ const Login = () => {
     try {
 
       const res = await fetch(
-        "https://production-engineering-inventory-g18j.onrender.com/api/auth/login",
+        "http://localhost:5000/api/auth/login",
         {
           method: "POST",
           headers: {
@@ -64,16 +64,25 @@ const Login = () => {
   return (
 
     <Box
-      sx={{
-        height: "100vh",
-        width: "100vw",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        background:
-          "linear-gradient(135deg,#7b3fe4,#9333ea,#6366f1)"
-      }}
-    >
+  sx={{
+    height: "100vh",
+    width: "100vw",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+
+    background: `
+      linear-gradient(
+        rgba(123, 63, 228, 0.75),
+        rgba(147, 51, 234, 0.75)
+      ),
+      url("/department.png")
+    `,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat"
+  }}
+>
 
       <Paper
         elevation={6}

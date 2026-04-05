@@ -28,7 +28,7 @@ const LabTables = ({ lab, name }) => {
         setLoading(true);
 
         const res = await fetch(
-          `https://production-engineering-inventory-g18j.onrender.com/api/assets/lab/${lab}`,
+          `http://localhost:5000/api/assets/lab/${lab}`,
           {
             method: "GET",
             headers: {
@@ -86,7 +86,7 @@ const LabTables = ({ lab, name }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          textAlign: "center"
+          textAlign: "center",
         }}
       >
 
