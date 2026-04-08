@@ -63,7 +63,7 @@ console.log(labMap)
       setLoading(true);
 
       const res = await fetch(
-        "https://production-engineering-inventory.onrender.com/api/changes/",
+        "https://production-engineering-inventory-1.onrender.com/api/changes/",
         {
           method: "POST",
           headers: {

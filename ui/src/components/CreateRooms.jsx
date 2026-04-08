@@ -13,7 +13,7 @@ const CreateRoom = ({ refreshRooms }) => {
   const [type, setType] = useState("lab");
 
   const handleSubmit = async () => {
-    await fetch("https://production-engineering-inventory.onrender.com/api/rooms", {
+    await fetch("https://production-engineering-inventory-1.onrender.com/api/rooms", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

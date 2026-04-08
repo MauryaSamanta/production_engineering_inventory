@@ -30,7 +30,7 @@ const Login = () => {
     try {
 
       const res = await fetch(
-        "https://production-engineering-inventory.onrender.com/api/auth/login",
+        "https://production-engineering-inventory-1.onrender.com/api/auth/login",
         {
           method: "POST",
           headers: {

@@ -25,7 +25,7 @@ const AdminChangeRequestsDashboard = () => {
     try {
 
       const res = await fetch(
-        "https://production-engineering-inventory.onrender.com/api/changes/pending",
+        "https://production-engineering-inventory-1.onrender.com/api/changes/pending",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -55,7 +55,7 @@ const AdminChangeRequestsDashboard = () => {
       setLoadingId(id);
 
       await fetch(
-        `https://production-engineering-inventory.onrender.com/api/changes/approve/${id}`,
+        `https://production-engineering-inventory-1.onrender.com/api/changes/approve/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -83,7 +83,7 @@ const AdminChangeRequestsDashboard = () => {
       setLoadingId(id);
 
       await fetch(
-        `https://production-engineering-inventory.onrender.com/api/changes/reject/${id}`,
+        `https://production-engineering-inventory-1.onrender.com/api/changes/reject/${id}`,
         {
           method: "PATCH",
           headers: {

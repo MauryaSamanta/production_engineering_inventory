@@ -15,7 +15,7 @@ const Home = () => {
   const [mode, setMode] = useState("home");
   const [labs, setLabs] = useState([]);
   const fetchLabs = () => {
-  fetch("https://production-engineering-inventory.onrender.com/api/rooms") // or /api/labs depending on your backend
+  fetch("https://production-engineering-inventory-1.onrender.com/api/rooms") // or /api/labs depending on your backend
     .then(res => res.json())
     .then(data => setLabs(data));
 };
