@@ -221,7 +221,7 @@ const SearchAssets = () => {
               Results ({results.length})
             </Typography>
 
-            <NonConsumablesTable data={results} />
+            <NonConsumablesTable data={results} showLab/>
 
           </CardContent>
 

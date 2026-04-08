@@ -33,6 +33,21 @@ const AssetSchema = new mongoose.Schema({
 
   manufacturer: String,
 
+  quantity: {
+  type: Number,
+  default: 1
+},
+
+workingCount: {
+  type: Number,
+  default: 1
+},
+
+notWorkingCount: {
+  type: Number,
+  default: 0
+},
+
   yearOfManufacture: Number,
 
   situation: {

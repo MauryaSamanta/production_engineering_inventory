@@ -15,8 +15,9 @@ import {
 
 import { useState } from "react";
 // import { useAuth } from "../auth/AuthContext";
+import { labs } from "../../data/dummyData";
 import {useAuth} from "../../auth/AuthContext"
-const NonConsumablesTable = ({ data }) => {
+const NonConsumablesTable = ({ data, showLab=false}) => {
 
   const { token } = useAuth();
 
@@ -25,14 +26,22 @@ const NonConsumablesTable = ({ data }) => {
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
  const [assetId, setAssetId] = useState(null);
-  if (!data || data.length === 0) {
-    return <p>No items found</p>;
-  }
 
-  const columns = Object.keys(data[0]).filter(
-    (key) => key !== "__v" && key !== "_id" && key !== "Type" && key!=="Name" && key!=="Lab"
-  );
+const labMap = {};
 
+labs.forEach((l) => {
+  labMap[l.code.trim().toUpperCase()] = l.name;
+});
+
+console.log(labMap)
+
+  const columns = Object.keys(data[0]).filter((key) => {
+  if (key === "__v" || key === "_id" || key === "Type" || key === "Name") return false;
+
+  if (!showLab && key === "Lab") return false;
+
+  return true;
+});
   const handleEditOpen = (row) => {
     setEditRow(row);
     setFormData(row);
@@ -108,23 +117,27 @@ const NonConsumablesTable = ({ data }) => {
 
         <TableBody>
 
-          {data.map((row) => (
+          {data.map((row) => {
+               console.log("RAW LAB:", row.lab);
 
+            return (
+            
             <TableRow key={row._id}>
 
               {columns.map((col) => (
 
                 <TableCell key={col}>
 
-                  {typeof row[col] === "object" && row[col] !== null ? (
-                    Object.entries(row[col]).map(([key, value]) => (
-                      <div key={key}>
-                        {key}: {value}
-                      </div>
-                    ))
-                  ) : (
-                    row[col]
-                  )}
+                {col === "Lab"
+  ? labMap[row[col]?.trim().toUpperCase()] || row[col]
+  : typeof row[col] === "object" && row[col] !== null
+    ? Object.entries(row[col]).map(([key, value]) => (
+        <div key={key}>
+          {key}: {value}
+        </div>
+      ))
+    : row[col]
+}
 
                 </TableCell>
 
@@ -144,7 +157,7 @@ const NonConsumablesTable = ({ data }) => {
 
             </TableRow>
 
-          ))}
+)})}
 
         </TableBody>
 
