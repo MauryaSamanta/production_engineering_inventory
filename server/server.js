@@ -16,27 +16,13 @@ const app = express();
 
 
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://production-engineering-inventory.vercel.app"
-];
-
+// Allow EVERYTHING
 app.use(cors({
-  origin: function (origin, callback) {
-    // allow requests with no origin (like Postman)
-    if (!origin) return callback(null, true);
-
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    } else {
-      return callback(new Error("CORS not allowed"));
-    }
-  },
+  origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true
 }));
 
-// 🔴 THIS LINE IS CRITICAL
+// Handle preflight explicitly
 app.options("*", cors());
 
 app.use(express.json());
