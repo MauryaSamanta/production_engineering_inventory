@@ -14,7 +14,30 @@ const app = express();
 
 /* ----------------------- Middleware ----------------------- */
 
-app.use(cors());
+
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://production-engineering-inventory.vercel.app"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // allow requests with no origin (like Postman)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("CORS not allowed"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true
+}));
+
+// 🔴 THIS LINE IS CRITICAL
+app.options("*", cors());
 
 app.use(express.json());
 
